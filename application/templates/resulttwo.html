@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donor</title>
+    <!-- Latest compiled and minified CSS -->
+<!-- Compiled and minified CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    
+    <nav style="background-color:  #8b0000">
+        <div class="container">
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">AVI Blood Bank</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+   
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            {% if username %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            
+
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Registration</a></li>
+            {% endif %}
+            <li><a class="waves-effect waves-light btn" href="{{ url_for('search') }}">
+                Search Your Needed Blood </a></li>
+          </ul>
+        </div>
+    </div>
+    </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="{{ url_for('home') }}">Home</a></li>
+            {% if username %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            
+
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Registration</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('search') }}">
+                Search Your Needed Blood </a></li>
+  </ul>
+
+
+        <!-- Main content-->
+        <div class="container">
+          {% if userMatch ==None: %}
+          <h3>No Donor Found with this blood Group</h3>
+          <p><a href=" {{ url_for('search') }} ">Click here to go back to Search Page</a></p>
+      
+          {% else %}
+          <h3>Donor Details having blood Group: </h3>
+             {% for user in userMatch: %}
+                
+             <ul class="collection with-header">
+              <li class="collection-header"><h4>{{user.firstname}}</h4></li>
+              <li class="collection-item">Bbdid : {{user.bbdid}}</li>
+              <li class="collection-item">Name : {{user.firstname}}</li>
+              <li class="collection-item">Address : {{user.address}}</li>
+              <li class="collection-item">Blood Group: {{user.bgroup}}</li>
+              <li class="collection-item">Date of Birth: {{user.dob}}</li>
+              
+            </ul>
+                
+                 <br>
+             {% endfor %}
+             <p><a href=" {{ url_for('search') }} ">Click here to go back to Search Page</a></p>
+             
+          {% endif %}
+        </div>
+     
+       
+     
+      <!-- Latest compiled and minified JavaScript -->
+<script src="static/javascript/main.js"></script>
+</body>
+</html>

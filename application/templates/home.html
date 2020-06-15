@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Donor</title>
+    <!-- Latest compiled and minified CSS -->
+<!-- Compiled and minified CSS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    
+    <nav style="background-color:  #8b0000">
+        <div class="container">
+        <div class="nav-wrapper">
+          <a href="#!" class="brand-logo">AVI Blood Bank</a>
+          <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+   
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            {% if username %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            
+
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Registration</a></li>
+            {% endif %}
+            <li><a class="waves-effect waves-light btn" href="{{ url_for('search') }}">
+                Search Your Needed Blood </a></li>
+          </ul>
+        </div>
+    </div>
+    </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="{{ url_for('home') }}">Home</a></li>
+            {% if username %}
+            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            {% else %}
+            
+
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('register') }}">Registration</a></li>
+            {% endif %}
+            <li><a href="{{ url_for('search') }}">
+                Search Your Needed Blood </a></li>
+  </ul>
+
+        <!-- Main content-->
+        <div class="container">
+          <div>{% if username %}
+            <a class=" btn " >Welcome  {{ username }}</a>
+            {% else %}
+            <a class=" btn "> Welcome Guest User</a>
+            {% endif %}
+          </div>
+          <div>
+            {% for message in get_flashed_messages() %}
+                <h3 class="green-text">{{ message }}</h3>
+            {% endfor %}
+          </div>
+          <div>
+            {% if error %}
+               <h3 class="red-text">{{error}}</h3>
+            {% endif %}
+          </div>
+            
+            <div class="row">
+
+                <div class="col s12 l4">
+                    <img style="height: 200px;width: 300px; margin-top: 30px;" src="static/blood.jpg">
+
+                </div>
+                <div class="col s12 l8">
+                    <h3>Why should  donate blood?</h3>
+                    <p>Our nation requires 4 Crore Units of Blood while only 40 lakh units are available,
+                        Every two seconds someone needs Blood
+                        There is no substitute for Human Blood. It cannot be 
+                        manufactured<br />
+                        Blood donation is an extremely noble deed, yet there
+                         is a scarcity of regular donors across India.
+                        We focus on creating & expanding a virtual army of 
+                        blood donating volunteers who could be searched and
+                         contacted by family / care givers of a patient in 
+                         times of need</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <img src="static/organ3.jpg" style="width: 100%;height:300px ;">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 l4">
+                  <div class="card">
+                    <div class="card-image">
+                      <img src="static/img1.jpg">
+                      <span class="card-title black-text"></span>
+                    </div>
+                    <div class="card-content ">
+                      <p>Are you eligible for blood donation? Find out about the
+                           eligibility requirements to donate blood today. Learn about general
+                            health, travel,  and more.</p>
+                    </div>
+                    <div class="card-action">
+                      <a href="#">Am I Eligible to Donate Blood?</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col s12 l4">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="static/img2.jpg">
+                        <span class="card-title teal-text"></span>
+                      </div>
+                      <div class="card-content">
+                        <p>You don't need a special reason to give blood. You just need your own reason.
+                          Some of us give blood because we were asked by a friend or a family
+                          member. 
+                        </p>
+                      </div>
+                      <div class="card-action">
+                        <a href="#">Never Donated Blood Before?</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col s12 l4">
+                    <div class="card">
+                      <div class="card-image">
+                        <img src="static/img5.jpg">
+                        <span class="card-title"></span>
+                      </div>
+                      <div class="card-content">
+                        <p>You will become a vital part of the biggest Blood Donation organization Blood bank
+                           today in the world and become a hero by donating your blood. 
+                        </p>
+                      </div>
+                      <div class="card-action">
+                        <a href="#">Become A Volunteer! Register here !</a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+        </div>
+        
+
+        
+
+        
+        
+        
+    
+<!-- Latest compiled and minified JavaScript -->
+<script src="static/javascript/main.js"></script>
+</body>
+</html>
